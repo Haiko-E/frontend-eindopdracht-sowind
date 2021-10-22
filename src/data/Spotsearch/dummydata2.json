@@ -1,0 +1,48 @@
+{
+  "query": "brome",
+  "suggestions": {
+    "num": 4,
+    "country": [],
+    "spot": [
+      {
+        "id": "us8734",
+        "n": "Bromela/Oso Flaco",
+        "kw": "bromela_oso-flaco",
+        "has": "1111011",
+        "lat": 35.0088,
+        "lon": -120.6,
+        "c": "United States"
+      },
+      {
+        "id": "ca425",
+        "n": "Lac Brome",
+        "kw": "lac_brome",
+        "has": "1001000",
+        "lat": 45.219,
+        "lon": -72.5064,
+        "c": "Canada"
+      }
+    ],
+    "region": [],
+    "location": [
+      {
+        "id": "2943795",
+        "n": "Brome",
+        "lat": 52.60019,
+        "lon": 10.93754,
+        "c": "Germany",
+        "r": "Niedersachsen",
+        "num": 3
+      },
+      {
+        "id": "6002133",
+        "n": "Lac-Brome",
+        "lat": 45.21678,
+        "lon": -72.51581,
+        "c": "Canada",
+        "r": "Quebec",
+        "num": 1
+      }
+    ]
+  }
+}

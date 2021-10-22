@@ -1,0 +1,56 @@
+{
+  "query": "brouwersdam",
+  "suggestions": {
+    "num": 5,
+    "country": [],
+    "spot": [
+      {
+        "id": "nl183",
+        "n": "Renesse / Brouwersdam Beach",
+        "kw": "renesse_brouwersdam_beach",
+        "has": "1001011",
+        "lat": 51.7713,
+        "lon": 3.8586,
+        "c": "Netherlands"
+      },
+      {
+        "id": "nl79",
+        "n": "Brouwersdam",
+        "kw": "brouwersdam",
+        "has": "1001011",
+        "lat": 51.7631,
+        "lon": 3.8524,
+        "c": "Netherlands"
+      },
+      {
+        "id": "nl184",
+        "n": "Renesse / Brouwersdam Bootsslip",
+        "kw": "renesse_brouwersdam_bootsslip",
+        "has": "1001011",
+        "lat": 51.7788,
+        "lon": 3.8637,
+        "c": "Netherlands"
+      },
+      {
+        "id": "nl208",
+        "n": "Renesse / Brouwersdam",
+        "kw": "renesse_brouwersdam",
+        "has": "1001011",
+        "lat": 51.7621,
+        "lon": 3.8462,
+        "c": "Netherlands"
+      },
+      {
+        "id": "nl135",
+        "n": "South Island / Brouwersdam",
+        "kw": "south_island_brouwersdam",
+        "has": "1001011",
+        "lat": 51.7403,
+        "lon": 3.8153,
+        "c": "Netherlands"
+      }
+    ],
+    "region": [],
+    "location": []
+  }
+}

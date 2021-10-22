@@ -1,0 +1,42 @@
+.searchresult {
+  background-color: #ffffff;
+  margin: 10px 10px;
+  padding: 10px;
+  display: flex;
+  border-radius: 10px;
+}
+
+.searchresult__img {
+  width: 30px;
+  height: 30px;
+  align-self: center;
+  padding: 10px;
+}
+
+.searchresult__text {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  flex-grow: 2;
+}
+
+.searchresult__text > h5,
+h4 {
+  margin: 2px;
+}
+
+.searchresult__text > h5 {
+  color: rgba(0, 0, 0, 0.514);
+}
+
+.searchresult > a > img {
+  width: 30px;
+  height: 30px;
+  justify-self: center;
+  padding: 10px;
+}
+
+.searchresult > a {
+  display: flex;
+  align-items: center;
+}
