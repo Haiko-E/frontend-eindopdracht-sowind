@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react';
 
+// deze context houd bij of er gebruiker is ingelogd of niet.
 export const AuthContext = createContext(null);
 
 const AuthContextProvider = ({ children }) => {

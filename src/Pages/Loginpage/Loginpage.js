@@ -10,10 +10,8 @@ const Login = () => {
   const auth = getAuth();
   const { setIsLoggedin } = useContext(AuthContext);
 
-  console.log(auth);
+  // onsubmit wordt er ingelogd via firebase, context wordt op true gezet
   function onFormSubmit(data) {
-    console.log(data.email);
-
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredentials) => {
         console.log(userCredentials);
@@ -29,9 +27,9 @@ const Login = () => {
     <div className='login'>
       <form onSubmit={handleSubmit(onFormSubmit)}>
         <label htmlFor='email'>E-mail</label>
-        <input type='email' {...register('email')} id='email' />
+        <input type='email' {...register('email')} />
         <label htmlFor='password'>Password</label>
-        <input type='password' {...register('password')} id='password' />
+        <input type='password' {...register('password')} />
         <button type='submit'>Login</button>
       </form>
     </div>

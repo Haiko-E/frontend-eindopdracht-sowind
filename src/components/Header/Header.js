@@ -2,39 +2,47 @@ import React, { useContext, useEffect, useState } from 'react';
 import Logo from '../../assets/Slice 1.svg';
 import './Header.css';
 import dummydata from '../../data/Spotsearch/dummydata.json';
-import { getAuth } from '@firebase/auth';
+import { getAuth, signOut } from '@firebase/auth';
 import { AuthContext } from '../../context/AuthProvider';
 
 const Header = ({ setSearchResult }) => {
-  const { isLoggedin, setIsLoggedin } = useContext(AuthContext);
-  const [searchInput, setSearchInput] = useState('');
   const auth = getAuth();
+  const { isLoggedin, setIsLoggedin } = useContext(AuthContext);
+  const [searchValue, setSearchValue] = useState('');
 
+  // update local state
   function onChangeHandler(e) {
-    setSearchInput(e.target.value);
+    setSearchValue(e.target.value);
   }
 
+  // voert de zoekfunctie uit en push data naar App.js state
   function onSubmitHandler(e) {
     e.preventDefault();
 
-    //! later vervangen voor de axios data
+    //TODO later vervangen voor de axios data
     setSearchResult(dummydata);
   }
 
-  useEffect(() => {
-    isLoggedin && setIsLoggedin(auth.currentUser.displayName);
-  }, [isLoggedin]);
+  // logout en zet context naar false
+  function logout() {
+    signOut(auth).then(() => {
+      console.log('signed out');
+      console.log(auth);
+      setIsLoggedin(false);
+    });
+  }
 
   return (
     <div className='header'>
       <img src={Logo} alt='Logo' />
-      <span>{isLoggedin && auth.currentUser.displayName}</span>
+      {isLoggedin && <span>{auth.currentUser.displayName}</span>}
+      {isLoggedin && <button onClick={() => logout()}>Logout</button>}
       <div>
         <form onSubmit={onSubmitHandler}>
           <label htmlFor='search'> Search</label>
           <input
             onChange={onChangeHandler}
-            value={searchInput}
+            value={searchValue}
             type='text'
             name='search'
             id='search'
