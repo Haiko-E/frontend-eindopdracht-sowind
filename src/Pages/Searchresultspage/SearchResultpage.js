@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import './SearchResult.css';
+import { Link } from 'react-router-dom';
+import styles from './SearchResultpage.module.css';
 import location from '../../assets/location.png';
 import arrow from '../../assets/right-arrow.png';
 
-const SearchResult = ({ searchResult }) => {
+const SearchResultpage = ({ searchResult, setSpotID }) => {
   const [spots, setSpots] = useState('');
 
   useEffect(() => {
@@ -11,16 +12,20 @@ const SearchResult = ({ searchResult }) => {
       const kitespots = searchResult.suggestions.spot;
       const result = kitespots.map((kitespot) => {
         return (
-          <div className='searchresult' key={kitespot.id}>
-            <img className='searchresult__img' src={location} alt='loc' />
+          <div className={styles.searchresult} key={kitespot.id}>
+            <img className={styles['searchresult__img']} src={location} alt='loc' />
 
-            <div className='searchresult__text'>
+            <div className={styles['searchresult__text']}>
               <h4>{kitespot.n}</h4>
               <h5>Spot bevind zich in {kitespot.c}</h5>
             </div>
-            <a href='...'>
-              <img src={arrow} alt='arrow-right' />
-            </a>
+            <Link to='/weatherinfo'>
+              <img
+                src={arrow}
+                alt='arrow-right'
+                onClick={() => setSpotID(kitespot.id)}
+              />
+            </Link>
           </div>
         );
       });
@@ -39,4 +44,4 @@ const SearchResult = ({ searchResult }) => {
   );
 };
 
-export default SearchResult;
+export default SearchResultpage;

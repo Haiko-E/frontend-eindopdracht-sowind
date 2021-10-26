@@ -1,13 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Logo from '../../assets/Slice 1.svg';
-import './Header.css';
+import styles from './Header.module.css';
 import dummydata from '../../data/Spotsearch/dummydata.json';
 import { getAuth, signOut } from '@firebase/auth';
 import { AuthContext } from '../../context/AuthProvider';
+import { useHistory } from 'react-router-dom';
 
 const Header = ({ setSearchResult }) => {
   const auth = getAuth();
-  const { isLoggedin, setIsLoggedin } = useContext(AuthContext);
+  const history = useHistory();
+  const { isLoggedin } = useContext(AuthContext);
   const [searchValue, setSearchValue] = useState('');
 
   // update local state
@@ -21,19 +23,16 @@ const Header = ({ setSearchResult }) => {
 
     //TODO later vervangen voor de axios data
     setSearchResult(dummydata);
+    history.push('/searchresult');
   }
 
   // logout en zet context naar false
   function logout() {
-    signOut(auth).then(() => {
-      console.log('signed out');
-      console.log(auth);
-      setIsLoggedin(false);
-    });
+    signOut(auth);
   }
 
   return (
-    <div className='header'>
+    <div className={styles.header}>
       <img src={Logo} alt='Logo' />
       {isLoggedin && <span>{auth.currentUser.displayName}</span>}
       {isLoggedin && <button onClick={() => logout()}>Logout</button>}

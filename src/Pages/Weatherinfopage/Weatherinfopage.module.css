@@ -1,0 +1,27 @@
+.container {
+}
+
+.itemcontainer {
+  display: flex;
+  background-color: #ffffff;
+  margin: 2px;
+  padding: 30px 5px;
+}
+
+.itemtime {
+  margin: 10px;
+}
+
+.itemarrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.itemarrow p {
+  margin: 0px 5px;
+}
+
+.itemarrow img {
+  width: 20px;
+  margin: 5px;
+}

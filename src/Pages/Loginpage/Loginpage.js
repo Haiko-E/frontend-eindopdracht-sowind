@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
+import styles from './Loginpage.module.css';
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
@@ -24,7 +25,7 @@ const Login = () => {
   }
 
   return (
-    <div className='login'>
+    <div className={styles.login}>
       <form onSubmit={handleSubmit(onFormSubmit)}>
         <label htmlFor='email'>E-mail</label>
         <input type='email' {...register('email')} />

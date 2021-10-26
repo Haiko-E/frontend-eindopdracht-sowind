@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import {
   getAuth,
@@ -6,6 +6,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { useHistory } from 'react-router-dom';
+import styles from './Signuppage.module.css';
 
 const Signuppage = () => {
   const { register, handleSubmit } = useForm();
@@ -32,7 +33,7 @@ const Signuppage = () => {
   }
 
   return (
-    <div className='signup'>
+    <div className={styles.signup}>
       <form onSubmit={handleSubmit(onFormSubmit)}>
         <label htmlFor='username'>username</label>
         <input type='text' {...register('username')} />
