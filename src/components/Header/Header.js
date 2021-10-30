@@ -23,7 +23,7 @@ const Header = ({ setSearchResult }) => {
 
     //TODO later vervangen voor de axios data
     setSearchResult(dummydata);
-    history.push('/searchresult');
+    history.push(`/searchresult/${searchValue}`);
   }
 
   // logout en zet context naar false

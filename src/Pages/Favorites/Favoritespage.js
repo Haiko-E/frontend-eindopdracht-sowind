@@ -9,25 +9,32 @@ const Favoritespage = () => {
   const auth = getAuth();
   const { isLoggedin } = useContext(AuthContext);
   const [userData, setUserData] = useState({});
+  const [loading, setloading] = useState(true);
 
   useEffect(() => {
     // Wanneer er een user is ingelogd, haal dan de data uit firebase om last visited en favorieten op te halen
     const docRef = doc(db, 'users', auth.currentUser.uid);
     const docSnap = getDoc(docRef);
 
-    docSnap.then((docSnap) => {
-      if (docSnap.exists()) {
-        console.log('Document data:', docSnap.data());
-        setUserData(docSnap.data());
-      } else {
-        // doc.data() will be undefined in this case
-        console.log('No such document!');
-      }
-    });
-
-    return () => {};
+    docSnap
+      .then((docSnap) => {
+        if (docSnap.exists()) {
+          console.log('Document data:', docSnap.data());
+          setUserData(docSnap.data());
+        } else {
+          // doc.data() will be undefined in this case
+          console.log('No such document!');
+        }
+      })
+      .then(() => setloading(false));
   }, [isLoggedin]);
 
+  // wanneer loading, return loading div
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  // return na loading
   return (
     <div>
       <div>Favorieten</div>

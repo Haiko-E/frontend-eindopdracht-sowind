@@ -12,9 +12,11 @@ const AuthContextProvider = ({ children }) => {
       if (user) {
         console.log('USER LOGGED IN', user);
         setIsLoggedin(true);
+        localStorage.setItem('loggedin', true);
       } else {
         console.log('USER SIGNED OUT');
         setIsLoggedin(false);
+        localStorage.setItem('loggedin', false);
       }
     });
     return () => {

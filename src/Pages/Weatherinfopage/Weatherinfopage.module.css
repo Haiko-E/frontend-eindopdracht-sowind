@@ -1,15 +1,46 @@
-.container {
+.container h5,
+h6,
+p {
+  margin: 0px;
+  text-align: center;
+}
+
+.container h6 {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.itemdate {
+  text-align: center;
+}
+
+.itemtime {
+  align-self: center;
+  margin: 0px 10px;
+  min-width: 40px;
 }
 
 .itemcontainer {
   display: flex;
+  justify-content: space-between;
   background-color: #ffffff;
   margin: 2px;
-  padding: 30px 5px;
+  padding: 10px 5px;
+  border-radius: 10px;
+  min-height: 80px;
 }
 
-.itemtime {
-  margin: 10px;
+.itemicon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0px 5px;
+}
+
+.itemicon > img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 20px 3px #ebebeb;
 }
 
 .itemarrow {
@@ -17,11 +48,54 @@
   justify-content: center;
   align-items: center;
 }
-.itemarrow p {
-  margin: 0px 5px;
+
+.itemwind {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 90px;
 }
 
 .itemarrow img {
   width: 20px;
   margin: 5px;
+}
+
+.itemwave {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  box-sizing: border-box;
+  min-width: 70px;
+}
+
+.itemwave img {
+  margin: 5px 5px;
+}
+.itemwave div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.itemtides {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 75px;
+}
+
+.itemtides img {
+  width: 30px;
+  height: 30px;
+  padding: 5px 5px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 20px 3px #ebebeb;
+}
+
+.itemtideheight {
+  order: 2;
 }

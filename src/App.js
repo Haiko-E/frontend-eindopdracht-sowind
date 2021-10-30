@@ -1,6 +1,6 @@
 // REACT
 import { useState, useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useHistory } from 'react-router-dom';
 
 // CSS
 import './App.css';
@@ -17,11 +17,28 @@ import WeatherInfopage from './Pages/Weatherinfopage/WeatherInfopage';
 
 function App() {
   const [searchResult, setSearchResult] = useState(null);
-  const [spotID, setSpotID] = useState(null);
+  const [spot, setSpot] = useState(null);
+  const history = useHistory();
 
-  // state in local storage plaatsen
-  localStorage.setItem('searchresult', JSON.stringify(searchResult));
-  localStorage.setItem('spotID', JSON.stringify(spotID));
+  useEffect(() => {
+    history.push('/');
+  }, []);
+
+  // persist on refresh. state blijft in de local storage staan.
+  useEffect(() => {
+    // state in local storage plaatsen
+    if (searchResult && spot) {
+      localStorage.setItem('searchresult', JSON.stringify(searchResult));
+      localStorage.setItem('spotID', JSON.stringify(spot));
+    }
+    return () => {
+      // setSearchResult(null);
+      // setSpotID(null);
+    };
+  }, [searchResult, spot]);
+
+  console.log(searchResult);
+  console.log(spot);
 
   return (
     <div>
@@ -36,15 +53,15 @@ function App() {
         <Route path='/signup'>
           <Signuppage />
         </Route>
-        <Route path='/searchresult'>
+        <Route path={`/searchresult/:query`}>
           <SearchResultpage
-            setSpotID={setSpotID}
-            spotID={spotID}
             searchResult={searchResult}
+            setSpot={setSpot}
+            spot={spot}
           />
         </Route>
-        <Route path='/weatherinfo'>
-          <WeatherInfopage spotID={spotID} />
+        <Route path='/weatherinfo/:kitespot'>
+          <WeatherInfopage spot={spot} />
         </Route>
       </Switch>
     </div>

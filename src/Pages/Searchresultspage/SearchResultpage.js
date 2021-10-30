@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
+
 import { Link } from 'react-router-dom';
 import styles from './SearchResultpage.module.css';
 import location from '../../assets/location.png';
 import arrow from '../../assets/right-arrow.png';
 
-const SearchResultpage = ({ searchResult, setSpotID }) => {
-  const [spots, setSpots] = useState('');
-
+const SearchResultpage = ({ searchResult, setSpot, spot }) => {
   useEffect(() => {
     if (searchResult) {
       const kitespots = searchResult.suggestions.spot;
@@ -19,27 +18,19 @@ const SearchResultpage = ({ searchResult, setSpotID }) => {
               <h4>{kitespot.n}</h4>
               <h5>Spot bevind zich in {kitespot.c}</h5>
             </div>
-            <Link to='/weatherinfo'>
-              <img
-                src={arrow}
-                alt='arrow-right'
-                onClick={() => setSpotID(kitespot.id)}
-              />
+            <Link to={`/weatherinfo/${kitespot.kw}`}>
+              <img src={arrow} alt='arrow-right' onClick={() => setSpot(kitespot)} />
             </Link>
           </div>
         );
       });
-      setSpots(result);
+      setSpot(result);
     }
-
-    // return () => {
-    //   cleanup;
-    // };
   }, [searchResult]);
 
   return (
     <div>
-      <div>{spots}</div>
+      <div>{spot}</div>
     </div>
   );
 };
