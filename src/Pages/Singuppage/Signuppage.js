@@ -1,12 +1,16 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
+import styles from './Signuppage.module.css';
+
+//FIREBASE
 import {
   getAuth,
   createUserWithEmailAndPassword,
   updateProfile,
 } from 'firebase/auth';
-import { useHistory } from 'react-router-dom';
-import styles from './Signuppage.module.css';
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from '../../Firebase';
 
 const Signuppage = () => {
   const { register, handleSubmit } = useForm();
@@ -25,6 +29,10 @@ const Signuppage = () => {
             history.push('/login');
           })
           .catch((error) => console.log(error.message));
+        setDoc(doc(db, 'users', userCredentials.user.uid), {
+          Favorites: [],
+          'Last visited': [],
+        });
       })
 
       .catch((error) => {

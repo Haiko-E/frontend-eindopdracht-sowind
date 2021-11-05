@@ -12,6 +12,7 @@ import Loginpage from './Pages/Loginpage/Loginpage';
 import Signuppage from './Pages/Singuppage/Signuppage';
 import Homepage from './Pages/Homepage/Homepage';
 import WeatherInfopage from './Pages/Weatherinfopage/WeatherInfopage';
+import Footer from './components/Footer/Footer';
 
 // FIREBASE
 
@@ -22,30 +23,32 @@ function App() {
 
   useEffect(() => {
     history.push('/');
+    setSpot(null);
+    return () => {};
   }, []);
 
-  // persist on refresh. state blijft in de local storage staan.
-  useEffect(() => {
-    // state in local storage plaatsen
-    if (searchResult && spot) {
-      localStorage.setItem('searchresult', JSON.stringify(searchResult));
-      localStorage.setItem('spotID', JSON.stringify(spot));
-    }
-    return () => {
-      // setSearchResult(null);
-      // setSpotID(null);
-    };
-  }, [searchResult, spot]);
+  // useEffect(() => {
+  //   console.log('USEEFFECT SPOT');
+  //   return () => {
+  //     console.log('CLEANUP SPOT');
+  //   };
+  // }, [spot]);
 
-  console.log(searchResult);
-  console.log(spot);
+  // useEffect(() => {
+  //   console.log('USEEFFECT SEARCHRESULT');
+  //   return () => {
+  //     console.log('CLEANUP SEARCHRESULT');
+  //   };
+  // }, [searchResult]);
+
+  console.log('SEARCHRESULT FROM APP', searchResult);
+  console.log('SPOT FROM APP', spot);
 
   return (
     <div>
-      <Header setSearchResult={setSearchResult} />
       <Switch>
         <Route exact path='/'>
-          <Homepage />
+          <Homepage setSpot={setSpot} />
         </Route>
         <Route path='/login'>
           <Loginpage />
@@ -54,16 +57,14 @@ function App() {
           <Signuppage />
         </Route>
         <Route path={`/searchresult/:query`}>
-          <SearchResultpage
-            searchResult={searchResult}
-            setSpot={setSpot}
-            spot={spot}
-          />
+          <SearchResultpage searchResult={searchResult} setSpot={setSpot} />
         </Route>
         <Route path='/weatherinfo/:kitespot'>
-          <WeatherInfopage spot={spot} />
+          <WeatherInfopage spot={spot} setSpot={setSpot} />
         </Route>
       </Switch>
+      <Header setSearchResult={setSearchResult} spot={spot} setSpot={setSpot} />
+      <Footer />
     </div>
   );
 }

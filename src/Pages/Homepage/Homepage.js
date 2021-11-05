@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import Favoritespage from '../Favorites/Favoritespage';
 
-const Homepage = () => {
+const Homepage = ({ setSpot }) => {
   const { isLoggedin } = useContext(AuthContext);
 
   if (isLoggedin) {
-    return <Favoritespage />;
+    return <Favoritespage setSpot={setSpot} />;
   }
   if (!isLoggedin) {
     return (

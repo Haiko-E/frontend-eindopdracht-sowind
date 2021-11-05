@@ -17,6 +17,7 @@ export function showtides(datatides, weatherdetail) {
                 {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}{' '}
                 hrs
               </h6>
+              <h4 className={styles.itemtideheight}>{tide.th}m</h4>
             </div>
           );
         }
@@ -28,13 +29,14 @@ export function showtides(datatides, weatherdetail) {
                 {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}{' '}
                 hrs
               </h6>
+              <h4 className={styles.itemtideheight}>{tide.th}m</h4>
             </div>
           );
         }
       }
     }
 
-    if (tide.dtl === weatherdetail.dtl) {
+    if (tide.dtl === weatherdetail.dtl && !tide.tp) {
       return <h4 className={styles.itemtideheight}>{tide.th}m</h4>;
     }
   });

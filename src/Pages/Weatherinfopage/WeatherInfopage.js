@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Weatherinfopage.module.css';
 
 //DUMMY DATA
-import dummydata from '../../data/Weahtersearch/dummyWeatherdata.json';
-import dummytides from '../../data/Tides/dummydatatides.json';
+// import dummydata from '../../data/Weahtersearch/dummyWeatherdata.json';
+// import dummytides from '../../data/Tides/dummydatatides.json';
+
+//REAL DATA
+import axios from 'axios';
 
 // ASSETS
 import arrow from '../../assets/Windarrow.svg';
@@ -16,10 +19,54 @@ import { timeconvert } from '../../helper/Convert';
 import { showtides } from '../../helper/showtides';
 
 const WeatherInfopage = ({ spot }) => {
+  const [weatherData, setWeatherData] = useState([]);
+  const [tides, setTides] = useState('');
+
+  async function fetchWeatherData() {
+    try {
+      const result = await axios.get(
+        `https://api-windfinder-pro.p.rapidapi.com/spots/${spot.id}/forecasts/?limit=48`,
+        {
+          headers: {
+            'x-rapidapi-host': 'api-windfinder-pro.p.rapidapi.com',
+            'x-rapidapi-key': '50dc06e1ffmsh74e7f780ffadcaep185a7ajsnff0dcef58db6',
+          },
+        }
+      );
+      console.log(result.data);
+      setWeatherData(result.data);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  async function fetchTidesData() {
+    try {
+      const result = await axios.get(
+        `https://api-windfinder-pro.p.rapidapi.com/spots/${spot.id}/tides/?limit=-1`,
+        {
+          headers: {
+            'x-rapidapi-host': 'api-windfinder-pro.p.rapidapi.com',
+            'x-rapidapi-key': '50dc06e1ffmsh74e7f780ffadcaep185a7ajsnff0dcef58db6',
+          },
+        }
+      );
+      console.log(result.data);
+      setTides(result.data);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  useEffect(() => {
+    fetchWeatherData();
+    fetchTidesData();
+    return () => {};
+  }, []);
+
   return (
     <div>
       <div className={styles.container}>
-        {dummydata.map((item, index) => {
+        {weatherData.map((item, index) => {
           const date = new Date(item.dtl);
           const dateoptions = {
             weekday: 'long',
@@ -67,7 +114,9 @@ const WeatherInfopage = ({ spot }) => {
                     <h5>{item.wah}m</h5>
                   </div>
                 </div>
-                <div className={styles.itemtides}>{showtides(dummytides, item)}</div>
+                <div className={styles.itemtides}>
+                  {tides && showtides(tides, item)}
+                </div>
               </div>
             </div>
           );

@@ -1,33 +1,45 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../context/AuthProvider';
-import { getAuth } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../../Firebase';
+//REACT
+import React, { useEffect, useState } from 'react';
+
+//STYLE
 import style from './Favoritespage.module.css';
 
-const Favoritespage = () => {
+//COMP
+import Result from '../../components/Result/Result';
+
+//FIREBASE
+import { getAuth } from 'firebase/auth';
+import { doc, getDoc, onSnapshot } from 'firebase/firestore';
+import { db } from '../../Firebase';
+
+const Favoritespage = ({ setSpot }) => {
   const auth = getAuth();
-  const { isLoggedin } = useContext(AuthContext);
   const [userData, setUserData] = useState({});
   const [loading, setloading] = useState(true);
+  const docRef = doc(db, 'users', auth.currentUser.uid);
+  const docSnap = getDoc(docRef);
 
   useEffect(() => {
-    // Wanneer er een user is ingelogd, haal dan de data uit firebase om last visited en favorieten op te halen
-    const docRef = doc(db, 'users', auth.currentUser.uid);
-    const docSnap = getDoc(docRef);
+    onSnapshot(docRef, (doc) => {
+      setUserData(doc.data());
+    });
 
-    docSnap
-      .then((docSnap) => {
-        if (docSnap.exists()) {
-          console.log('Document data:', docSnap.data());
-          setUserData(docSnap.data());
-        } else {
-          // doc.data() will be undefined in this case
-          console.log('No such document!');
-        }
-      })
-      .then(() => setloading(false));
-  }, [isLoggedin]);
+    if (auth.currentUser) {
+      // Wanneer er een user is ingelogd, haal dan de data uit firebase om last visited en favorieten op te halen
+
+      docSnap
+        .then((docSnap) => {
+          if (docSnap.exists()) {
+            console.log('Document data:', docSnap.data());
+            setUserData(docSnap.data());
+          } else {
+            // doc.data() will be undefined in this case
+            console.log('No such document!');
+          }
+        })
+        .then(() => setloading(false));
+    }
+  }, []);
 
   // wanneer loading, return loading div
   if (loading) {
@@ -36,13 +48,16 @@ const Favoritespage = () => {
 
   // return na loading
   return (
-    <div>
-      <div>Favorieten</div>
-      {userData.Favorites &&
-        userData.Favorites.map((favo) => <div key={favo}>{favo}</div>)}
-      <div>Last Visited</div>
+    <div className={style.favoritecontainer}>
+      <h3>Favorieten</h3>
+      {console.log(userData)}
+      {userData.Favorite &&
+        userData.Favorite.map((favo, index) => (
+          <Result key={favo.id} kitespot={favo} index={index} setSpot={setSpot} />
+        ))}
+      <h3>Last Visited</h3>
       {userData.Lastvisit &&
-        userData.Lastvisit.map((visit) => <div key={visit}>{visit}</div>)}
+        userData.Lastvisit.map((visit) => <h5 key={visit}>{visit}</h5>)}
     </div>
   );
 };
