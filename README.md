@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# Welkom op de SoWind applicatie
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Inleiding
 
-## Available Scripts
+Met deze applicatie kun je zoeken naar alle kitesurfspots over de hele wereld. Wanneer je je spot hebt gevonden kun je de laatste relavante weerdata opvragen en wanneer er spot informatie beschikbaar is, de spot informatie.
 
-In the project directory, you can run:
+Wil je gebruik maken van de favorieten functie binnen de applicatie, log dan even in of maak een account aan.
 
-### `npm start`
+![](./src/assets/Screenshot.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+De zoekfunctie werkt altijd, of je nou ingelogd bent of niet.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installatie
 
-### `npm test`
+Om de applicatie lokaal te runnen, clone deze repository en run de volgende shell commands
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### `installeren van dependencies`
 
-### `npm run build`
+```shell
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+wanneer _npm install_ is uitgevoerd kan je de applicatie starten d.m.v. het volgende commando
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### `starten van applicatie`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```shell
+npm start
+```
 
-### `npm run eject`
+De applicatie wordt gestart in je browser. Kies in de inspector voor een mobiel overzicht omdat de applicatie mobile first is gebouwd.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Gebruik
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `Search`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Zoeken naar een kitesurfspot kan altijd, ongeacht of je ingelogd bent of niet. Zoek bijvoorbeeld naar `brouwersdam` of `oostvoorne`, 2 bekende kitesurf locaties in nederland. Heb je er eenmaal 1 gevonden en wil je terug, klik dan op het het SoWind logo om terug te keren naar de homepagina.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### `Log-in`
 
-## Learn More
+Je kan direct gebruik maken van de zoekfunctie of je kan er voor kiezen om eerst in te loggen zo dat je gebruik kan maken van de favorieten functie in de applicatie.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+username: bassie@novi.nl of adriaan@novi.nl (ww is voor beide het zelfde)\
+ww: bassie1234
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Wil je je eigen gebruiker aanmaken dan kan dat ook, ga dan door naar `sign-up`
 
-### Code Splitting
+### `Sign-up`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Vul alle gegevens in die gevraagd worden en log er daarna mee in. In Firebase wordt er een user aangemaakt en er wordt een object met favorieten en last visited aangemaakt. **Wil je meekijken in firebase**, stuur mij dan even een mail ( haiko.erinkveld@gmail.com ) met je e-mail adres, dan kan ik je toevoegen aan een tijdelijke gebruiker.
 
-### Analyzing the Bundle Size
+### `Favorieten`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Wanneer je ingelogd bent heb je de mogelijkheid om favorieten toe te voegen. Klik op het ster icoon en het spotobject wordt opgeslagen als favoriet in firebase.

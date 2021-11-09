@@ -3,6 +3,31 @@ import lowtide from '../assets/low-tide.png';
 import styles from '../Pages/Weatherinfopage/Weatherinfopage.module.css';
 
 export function showtides(datatides, weatherdetail) {
+  // const output = weatherdetail.map((weather) => {
+  //   // hier filteren we alle tides die normaal of extreem zijn en in DIT weather-tijdslot passen
+  //   const tideMatches = datatides.filter((tide) => {
+  //     const hasTideMatch = tide.dtl === weather.dtl;
+  //     let hasExtremeTideMatch;
+  //     if (tide.tp) {
+  //       const timetide = new Date(tide.dtl).getTime();
+  //       const timeweather = new Date(weather.dtl).getTime();
+  //       if (
+  //         timetide - timeweather <= 5400000 &&
+  //         timetide - timeweather >= -5400000
+  //       ) {
+  //         hasExtremeTideMatch = true;
+  //       }
+  //     }
+  //     return hasTideMatch || hasExtremeTideMatch;
+  //   });
+  //   return {
+  //     timeslot: weather.dtl,
+  //     weather: weather,
+  //     tides: tideMatches,
+  //   };
+  // });
+  // console.log(output);
+
   return datatides.map((tide) => {
     if (tide.tp) {
       const time = new Date(tide.dtl);
@@ -24,7 +49,7 @@ export function showtides(datatides, weatherdetail) {
         if (tide.tp === 'low') {
           return (
             <div key={tide.dtl}>
-              <img src={lowtide} alt='hightide' />
+              <img src={lowtide} alt='lowtide' />
               <h6>
                 {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}{' '}
                 hrs
@@ -36,7 +61,7 @@ export function showtides(datatides, weatherdetail) {
       }
     }
 
-    if (tide.dtl === weatherdetail.dtl && !tide.tp) {
+    if (tide.dtl === weatherdetail.dtl) {
       return <h4 className={styles.itemtideheight}>{tide.th}m</h4>;
     }
   });

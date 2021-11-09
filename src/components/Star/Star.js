@@ -13,7 +13,7 @@ import { doc, updateDoc, getDoc, arrayRemove, arrayUnion } from 'firebase/firest
 import { db } from '../../Firebase';
 import { getAuth } from 'firebase/auth';
 
-const Favorite = ({ index, kitespot }) => {
+const Favorite = ({ kitespot }) => {
   const [favorite, setFavorite] = useState(false);
   const auth = getAuth();
   const docRef = doc(db, 'users', auth.currentUser.uid);
