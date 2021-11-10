@@ -11,3 +11,23 @@
   box-shadow: 2px 2px 20px 0px #00000050;
   margin-top: 20px;
 }
+
+.footer > span {
+  font-weight: 600;
+  padding-right: 20px;
+}
+
+.footer > button {
+  padding: 5px;
+  margin: 10px;
+  width: 5rem;
+  border-radius: 10px;
+  border-color: rgba(255, 255, 255, 0.534);
+  background-color: #f3f1edab;
+  box-shadow: 2px 2px 20px 0px #42323225;
+  cursor: pointer;
+}
+
+.footer > button:hover {
+  background-color: #f3f1edf3;
+}

@@ -1,13 +1,18 @@
 .header {
   background-color: #f8b300;
 
-  padding: 10px;
   display: flex;
   align-items: center;
   position: fixed;
   width: 100%;
   top: 0;
   box-shadow: 2px 2px 20px 0px #00000050;
+  min-height: 80px;
+}
+.header > a {
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
 .header2 {
@@ -32,9 +37,9 @@
   border-bottom: 2px solid rgb(0, 0, 0);
 }
 
-.header2 img {
+.header2 > header > a {
   position: absolute;
-  left: 30px;
+  left: 0px;
   top: 20px;
 }
 

@@ -43,12 +43,18 @@ const Signuppage = () => {
   return (
     <div className={styles.signup}>
       <form onSubmit={handleSubmit(onFormSubmit)}>
-        <label htmlFor='username'>username</label>
-        <input type='text' {...register('username')} />
-        <label htmlFor='email'>E-mail</label>
-        <input type='email' {...register('email')} />
-        <label htmlFor='password'>Password</label>
-        <input type='password' {...register('password')} />
+        <div className={styles.input}>
+          <label htmlFor='username'>Username</label>
+          <input type='text' {...register('username')} />
+        </div>
+        <div className={styles.input}>
+          <label htmlFor='email'>E-mail</label>
+          <input type='email' {...register('email')} />
+        </div>
+        <div className={styles.input}>
+          <label htmlFor='password'>Password</label>
+          <input type='password' {...register('password')} />
+        </div>
         <button type='submit'>Signup</button>
       </form>
     </div>

@@ -1,6 +1,7 @@
 //REACT
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, NavLink, useHistory } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider';
 
 //STYLE
 import styles from './Header.module.css';
@@ -15,6 +16,7 @@ import axios from 'axios';
 const Header = ({ setSearchResult, spot, setSpot }) => {
   const history = useHistory();
   const [searchValue, setSearchValue] = useState('');
+  const { isLoggedin } = useContext(AuthContext);
 
   // update local state
   function onChangeHandler(e) {
@@ -47,11 +49,11 @@ const Header = ({ setSearchResult, spot, setSpot }) => {
     fetchData();
   }
 
-  if (spot) {
+  if (spot && isLoggedin) {
     return (
       <div className={`${styles.header} ${styles.header2}`}>
         <header>
-          <Link to={`/searchresult/${searchValue}`}>
+          <Link to={`/`}>
             <img src={backarrow} alt='back' onClick={() => setSpot(null)} />
           </Link>
           <h2>{spot.n}</h2>
@@ -76,11 +78,10 @@ const Header = ({ setSearchResult, spot, setSpot }) => {
 
   return (
     <div className={styles.header}>
-      <div>
-        <Link to='/'>
-          <img src={Logo} alt='Logo' />
-        </Link>
-      </div>
+      <Link to='/'>
+        <img src={Logo} alt='Logo' />
+      </Link>
+
       <div className={styles.searchbar}>
         <form onSubmit={onSubmitHandler}>
           <label htmlFor='search'></label>

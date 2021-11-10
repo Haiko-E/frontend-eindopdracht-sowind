@@ -27,20 +27,6 @@ function App() {
     return () => {};
   }, []);
 
-  // useEffect(() => {
-  //   console.log('USEEFFECT SPOT');
-  //   return () => {
-  //     console.log('CLEANUP SPOT');
-  //   };
-  // }, [spot]);
-
-  // useEffect(() => {
-  //   console.log('USEEFFECT SEARCHRESULT');
-  //   return () => {
-  //     console.log('CLEANUP SEARCHRESULT');
-  //   };
-  // }, [searchResult]);
-
   console.log('SEARCHRESULT FROM APP', searchResult);
   console.log('SPOT FROM APP', spot);
 

@@ -1,0 +1,38 @@
+.login > form {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 10px;
+  align-items: center;
+  border-radius: 20px;
+  margin: 0px 10px;
+}
+
+.login input {
+  margin-bottom: 10px;
+  max-width: 250px;
+  border-radius: 20px;
+  padding: 5px;
+  border: 1px solid orange;
+  background-color: #ffffffc4;
+}
+
+.login label {
+  font-weight: 600;
+}
+
+.login button {
+  padding: 10px;
+  margin: 10px;
+  width: 10rem;
+  border-radius: 10px;
+  border-color: rgba(255, 255, 255, 0.534);
+  background-color: #f8b200bb;
+  box-shadow: 2px 2px 20px 0px #42323225;
+  cursor: pointer;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+}

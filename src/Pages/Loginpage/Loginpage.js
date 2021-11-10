@@ -27,10 +27,14 @@ const Login = () => {
   return (
     <div className={styles.login}>
       <form onSubmit={handleSubmit(onFormSubmit)}>
-        <label htmlFor='email'>E-mail</label>
-        <input type='email' {...register('email')} />
-        <label htmlFor='password'>Password</label>
-        <input type='password' {...register('password')} />
+        <div className={styles.input}>
+          <label htmlFor='email'>E-mail</label>
+          <input type='email' {...register('email')} />
+        </div>
+        <div className={styles.input}>
+          <label htmlFor='password'>Password</label>
+          <input type='password' {...register('password')} />
+        </div>
         <button type='submit'>Login</button>
       </form>
     </div>

@@ -47,8 +47,11 @@ Wil je je eigen gebruiker aanmaken dan kan dat ook, ga dan door naar `sign-up`
 
 ### `Sign-up`
 
-Vul alle gegevens in die gevraagd worden en log er daarna mee in. In Firebase wordt er een user aangemaakt en er wordt een object met favorieten en last visited aangemaakt. **Wil je meekijken in firebase**, stuur mij dan even een mail ( haiko.erinkveld@gmail.com ) met je e-mail adres, dan kan ik je toevoegen aan een tijdelijke gebruiker.
+Vul alle gegevens in die gevraagd worden en log er daarna mee in. In Firebase wordt er een user aangemaakt en er wordt een object met favorieten en last visited aangemaakt. **Wil je meekijken in firebase** ( https://console.firebase.google.com/ ) en log in met onderstaande gegevens.
+
+username: haiko.erinkveld@novi-education.nl\
+ww: Novi1234
 
 ### `Favorieten`
 
-Wanneer je ingelogd bent heb je de mogelijkheid om favorieten toe te voegen. Klik op het ster icoon en het spotobject wordt opgeslagen als favoriet in firebase.
+Wanneer je ingelogd bent heb je de mogelijkheid om favorieten toe te voegen. Klik op het ster icoon, en het spotobject wordt opgeslagen als favoriet in firebase.
