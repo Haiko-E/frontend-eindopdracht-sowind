@@ -1,6 +1,9 @@
-import React from 'react';
+//REACT
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
+
+//STYLE
 import styles from './Signuppage.module.css';
 
 //FIREBASE
@@ -14,9 +17,11 @@ import { db } from '../../Firebase';
 
 const Signuppage = () => {
   const { register, handleSubmit } = useForm();
-
+  const [error, setError] = useState('');
   const history = useHistory();
 
+  // wanneer gesubmit voeg de data in de firebasefunctie,
+  // en maak een Array in firebase met favorieten en last visited
   function onFormSubmit(data) {
     const auth = getAuth();
 
@@ -36,7 +41,8 @@ const Signuppage = () => {
       })
 
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
+        setError(error.code);
       });
   }
 
@@ -54,6 +60,7 @@ const Signuppage = () => {
         <div className={styles.input}>
           <label htmlFor='password'>Password</label>
           <input type='password' {...register('password')} />
+          {error && <p>{error}</p>}
         </div>
         <button type='submit'>Signup</button>
       </form>

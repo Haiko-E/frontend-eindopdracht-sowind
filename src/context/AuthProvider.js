@@ -1,5 +1,9 @@
+//REACT
 import React, { createContext, useState, useEffect } from 'react';
+
+//FIREBASE
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
 // deze context houd bij of er gebruiker is ingelogd of niet.
 export const AuthContext = createContext(null);
 
@@ -10,19 +14,15 @@ const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log('USER LOGGED IN', user);
         setIsLoggedin(true);
-        localStorage.setItem('loggedin', true);
       } else {
-        console.log('USER SIGNED OUT');
         setIsLoggedin(false);
-        localStorage.setItem('loggedin', false);
       }
     });
     return () => {
       setIsLoggedin('pending');
     };
-  }, []);
+  }, [auth]);
 
   return (
     <AuthContext.Provider

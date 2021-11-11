@@ -7,7 +7,7 @@ import { getFirestore } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyBMlSZtD0u3zjJ3Wa42HTJKSAuz_3A29Pg',
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: 'sowind-eindopdracht.firebaseapp.com',
   projectId: 'sowind-eindopdracht',
   storageBucket: 'sowind-eindopdracht.appspot.com',

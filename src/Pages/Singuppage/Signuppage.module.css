@@ -37,3 +37,8 @@
   display: flex;
   flex-direction: column;
 }
+
+.signup p {
+  color: rgb(192, 0, 0);
+  font-size: 0.8rem;
+}

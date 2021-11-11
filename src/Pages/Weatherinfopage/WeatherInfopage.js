@@ -1,4 +1,7 @@
+//REACT
 import React, { useEffect, useState } from 'react';
+
+//STYLE
 import styles from './Weatherinfopage.module.css';
 
 //DUMMY DATA
@@ -8,14 +11,16 @@ import styles from './Weatherinfopage.module.css';
 //REAL DATA
 import axios from 'axios';
 
-// ASSETS
+//ASSETS
 import arrow from '../../assets/Windarrow.svg';
 import wavearrow from '../../assets/Wave arrow.svg';
 import waveheight from '../../assets/Wave hight.svg';
 
-// HELPER FUNCTIES
+//HELPER FUNCTIES
 import { iconpicker } from '../../helper/Iconpicker';
 import { timeconvert } from '../../helper/Convert';
+
+//COMPONENTS
 import Tides from '../../components/Tides/Tides';
 
 const WeatherInfopage = ({ spot }) => {
@@ -30,11 +35,11 @@ const WeatherInfopage = ({ spot }) => {
         {
           headers: {
             'x-rapidapi-host': 'api-windfinder-pro.p.rapidapi.com',
-            'x-rapidapi-key': '50dc06e1ffmsh74e7f780ffadcaep185a7ajsnff0dcef58db6',
+            'x-rapidapi-key': process.env.REACT_APP_WINDFINDER_API_KEY,
           },
         }
       );
-      console.log(result.data);
+
       setWeatherData(result.data);
     } catch (e) {
       console.error(e);
@@ -48,11 +53,10 @@ const WeatherInfopage = ({ spot }) => {
         {
           headers: {
             'x-rapidapi-host': 'api-windfinder-pro.p.rapidapi.com',
-            'x-rapidapi-key': '50dc06e1ffmsh74e7f780ffadcaep185a7ajsnff0dcef58db6',
+            'x-rapidapi-key': process.env.REACT_APP_WINDFINDER_API_KEY,
           },
         }
       );
-      console.log(result.data);
       setTides(result.data);
     } catch (e) {
       console.error(e);
@@ -88,12 +92,7 @@ const WeatherInfopage = ({ spot }) => {
           tides: tideMatches,
         };
       });
-      console.log(output);
-
-      // uitkomst in niewue stat;e variabele
-
       setAllData(output);
-      // in de return map je daaroverheen en maak je 1 balk voor iedere tijd
     }
   }, [weatherData, tides]);
 

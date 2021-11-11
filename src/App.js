@@ -27,9 +27,6 @@ function App() {
     return () => {};
   }, []);
 
-  console.log('SEARCHRESULT FROM APP', searchResult);
-  console.log('SPOT FROM APP', spot);
-
   return (
     <div>
       <Switch>

@@ -1,7 +1,14 @@
+//REACT
 import React, { useContext } from 'react';
-import styles from './Homepage.module.css';
 import { Link } from 'react-router-dom';
+
+//STYLE
+import styles from './Homepage.module.css';
+
+//CONTEXT
 import { AuthContext } from '../../context/AuthProvider';
+
+//COMPONENTS / PAGES
 import Favoritespage from '../Favorites/Favoritespage';
 
 const Homepage = ({ setSpot }) => {

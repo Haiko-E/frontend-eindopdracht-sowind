@@ -1,3 +1,4 @@
+//DAY ICONS
 import sun from '../assets/WeatherIcons/01.sun-light.png';
 import sunclouds1 from '../assets/WeatherIcons/05.partial-cloudy-light.png';
 import sunclouds2 from '../assets/WeatherIcons/07.mostly-cloud-light.png';
@@ -6,6 +7,7 @@ import sunrain1 from '../assets/WeatherIcons/06.rainyday-light.png';
 import regen1 from '../assets/WeatherIcons/20.rain-light.png';
 import regen2 from '../assets/WeatherIcons/18.heavy-rain-light.png';
 
+//NIGHT ICONS
 import halfmoon from '../assets/WeatherIcons/09.half-moon-light.png';
 import halfmooncloud1 from '../assets/WeatherIcons/10.cloudy-night-light.png';
 import moonrain from '../assets/WeatherIcons/21.cloudy-night-lightrain.png';

@@ -1,7 +1,7 @@
 //REACT
 import React from 'react';
 
-//COMP
+//COMPONENTS
 import Result from '../../components/Result/Result';
 
 const SearchResultpage = ({ searchResult, setSpot }) => {

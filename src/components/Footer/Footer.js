@@ -1,8 +1,15 @@
+// REACT
 import React, { useContext } from 'react';
-import styles from './Footer.module.css';
-import { getAuth, signOut } from '@firebase/auth';
-import { AuthContext } from '../../context/AuthProvider';
 import { useHistory } from 'react-router-dom';
+
+//STYLE
+import styles from './Footer.module.css';
+
+//CONTEXT
+import { AuthContext } from '../../context/AuthProvider';
+
+//FIREBASE
+import { getAuth, signOut } from '@firebase/auth';
 
 const Footer = () => {
   const auth = getAuth();

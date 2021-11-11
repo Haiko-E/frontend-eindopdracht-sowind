@@ -3,6 +3,7 @@ export const tidefinder = (tides) => {
     if ((tide.tp && tide.tp === 'high') || tide.tp === 'low') {
       return tide;
     }
+    return '';
   });
   return result;
 };

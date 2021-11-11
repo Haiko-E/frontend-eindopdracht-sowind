@@ -1,17 +1,21 @@
+//REACT
 import React from 'react';
+
+//ICONS
 import hightide from '../../assets/high-tide.png';
 import lowtide from '../../assets/low-tide.png';
+
+//STYLING
 import styles from '../../Pages/Weatherinfopage/Weatherinfopage.module.css';
+
+//HELPER FUNCTIONS
 import { showtime } from '../../helper/showtime';
 import { tidefinder } from '../../helper/tidefinder';
 
 const Tides = ({ tides }) => {
-  console.log(tides);
-
+  //helper functie die kijkt of er hoog of laag tij is
+  //result is het object met hoog of laag tij informatie
   const result = tidefinder(tides);
-
-  console.log('gevonden?', result);
-  // find methode gebruiken om te kijken of er een extreme in zit, en op basis daarvan dingen weergeven!
 
   return (
     <>

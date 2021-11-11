@@ -12,7 +12,7 @@ De zoekfunctie werkt altijd, of je nou ingelogd bent of niet.
 
 ## Installatie
 
-Om de applicatie lokaal te runnen, clone deze repository en run de volgende shell commands
+Om de applicatie lokaal te runnen, clone deze repository en run de volgende shell command
 
 #### `installeren van dependencies`
 
@@ -20,7 +20,16 @@ Om de applicatie lokaal te runnen, clone deze repository en run de volgende shel
 npm install
 ```
 
-wanneer _npm install_ is uitgevoerd kan je de applicatie starten d.m.v. het volgende commando
+#### `aanmaken van .env bestand`
+
+maak een .env bestand aan in de root folder en voeg de volgende 2 keys toe aan het .env bestand
+
+`REACT_APP_WINDFINDER_API_KEY=`'_api key is te vinden in de KEYS.md_'\
+`REACT_APP_FIREBASE_API_KEY=`'_api key is te vinden in de KEYS.md_'
+
+clone je deze repo van github, vraag het KEY.md bestand op via de maker van deze app.
+
+wanneer _npm install_ is uitgevoerd en het _.env_ bestand met keys is aangemaakt kan je de applicatie starten d.m.v. het volgende commando
 
 #### `starten van applicatie`
 
@@ -47,10 +56,7 @@ Wil je je eigen gebruiker aanmaken dan kan dat ook, ga dan door naar `sign-up`
 
 ### `Sign-up`
 
-Vul alle gegevens in die gevraagd worden en log er daarna mee in. In Firebase wordt er een user aangemaakt en er wordt een object met favorieten en last visited aangemaakt. **Wil je meekijken in firebase** ( https://console.firebase.google.com/ ) en log in met onderstaande gegevens.
-
-username: haiko.erinkveld@novi-education.nl\
-ww: Novi1234
+Vul alle gegevens in die gevraagd worden en log er daarna mee in. In Firebase wordt er een user aangemaakt en er wordt een object met favorieten en last visited aangemaakt. **Wil je meekijken in firebase** ( https://console.firebase.google.com/ ) en log in met de gegevens die in het KEYS.md bestand staan
 
 ### `Favorieten`
 

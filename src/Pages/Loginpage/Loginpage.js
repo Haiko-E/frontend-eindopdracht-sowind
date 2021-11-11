@@ -1,12 +1,20 @@
-import React, { useContext } from 'react';
+//REACT
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useHistory } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthProvider';
+
+//STYLE
 import styles from './Loginpage.module.css';
+
+//CONTEXT
+import { AuthContext } from '../../context/AuthProvider';
+
+//FIREBASE
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
+  const [error, setError] = useState('');
   const history = useHistory();
   const auth = getAuth();
   const { setIsLoggedin } = useContext(AuthContext);
@@ -14,13 +22,13 @@ const Login = () => {
   // onsubmit wordt er ingelogd via firebase, context wordt op true gezet
   function onFormSubmit(data) {
     signInWithEmailAndPassword(auth, data.email, data.password)
-      .then((userCredentials) => {
-        console.log(userCredentials);
+      .then(() => {
         history.push('/');
         setIsLoggedin(true);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
+        setError(error.code);
       });
   }
 
@@ -34,7 +42,9 @@ const Login = () => {
         <div className={styles.input}>
           <label htmlFor='password'>Password</label>
           <input type='password' {...register('password')} />
+          {error && <p>{error}</p>}
         </div>
+
         <button type='submit'>Login</button>
       </form>
     </div>
@@ -42,5 +52,3 @@ const Login = () => {
 };
 
 export default Login;
-
-//TODO validatieregels toevoegen en tonen aan de gebruiker

@@ -1,7 +1,6 @@
 //REACT
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink, useHistory } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthProvider';
 
 //STYLE
 import styles from './Header.module.css';
@@ -16,7 +15,6 @@ import axios from 'axios';
 const Header = ({ setSearchResult, spot, setSpot }) => {
   const history = useHistory();
   const [searchValue, setSearchValue] = useState('');
-  const { isLoggedin } = useContext(AuthContext);
 
   // update local state
   function onChangeHandler(e) {
@@ -34,12 +32,11 @@ const Header = ({ setSearchResult, spot, setSpot }) => {
           {
             headers: {
               'x-rapidapi-host': 'api-windfinder-pro.p.rapidapi.com',
-              'x-rapidapi-key': '50dc06e1ffmsh74e7f780ffadcaep185a7ajsnff0dcef58db6',
+              'x-rapidapi-key': process.env.REACT_APP_WINDFINDER_API_KEY,
             },
           }
         );
-        console.log(result.data);
-
+        // App.js setState functie
         setSearchResult(result);
         history.push(`/searchresult/${searchValue}`);
       } catch (e) {
@@ -49,7 +46,8 @@ const Header = ({ setSearchResult, spot, setSpot }) => {
     fetchData();
   }
 
-  if (spot && isLoggedin) {
+  // Laat deze header zien wanneer er een spot is gekozen
+  if (spot) {
     return (
       <div className={`${styles.header} ${styles.header2}`}>
         <header>
@@ -76,6 +74,7 @@ const Header = ({ setSearchResult, spot, setSpot }) => {
     );
   }
 
+  // laat normale searchheader zien wanneer niet aan bovenstaande word voldaan
   return (
     <div className={styles.header}>
       <Link to='/'>

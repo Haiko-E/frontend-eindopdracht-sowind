@@ -26,14 +26,11 @@ const Favoritespage = ({ setSpot }) => {
 
     if (auth.currentUser) {
       // Wanneer er een user is ingelogd, haal dan de data uit firebase om last visited en favorieten op te halen
-
       docSnap
         .then((docSnap) => {
           if (docSnap.exists()) {
-            console.log('Document data:', docSnap.data());
             setUserData(docSnap.data());
           } else {
-            // doc.data() will be undefined in this case
             console.log('No such document!');
           }
         })
@@ -50,7 +47,7 @@ const Favoritespage = ({ setSpot }) => {
   return (
     <div className={style.favoritecontainer}>
       <h3>Favorieten</h3>
-      {console.log(userData)}
+
       {userData.Favorite &&
         userData.Favorite.map((favo, index) => (
           <Result key={favo.id} kitespot={favo} index={index} setSpot={setSpot} />
