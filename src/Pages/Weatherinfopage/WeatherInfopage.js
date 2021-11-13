@@ -63,8 +63,8 @@ const WeatherInfopage = ({ spot }) => {
     }
   }
   useEffect(() => {
-    fetchWeatherData();
-    fetchTidesData();
+    weatherData && fetchWeatherData();
+    weatherData && fetchTidesData();
   }, []);
 
   useEffect(() => {
