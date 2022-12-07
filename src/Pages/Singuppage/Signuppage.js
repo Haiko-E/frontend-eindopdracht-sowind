@@ -35,7 +35,7 @@ const Signuppage = () => {
           })
           .catch((error) => console.log(error.message));
         setDoc(doc(db, 'users', userCredentials.user.uid), {
-          Favorites: [],
+          Favorite: [],
           'Last visited': [],
         });
       })

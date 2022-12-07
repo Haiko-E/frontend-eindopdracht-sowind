@@ -38,8 +38,10 @@ const Favorite = ({ kitespot }) => {
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       const Favo = docSnap.data().Favorite;
-      const result = Favo.map((fav) => fav.n);
-      return result.includes(spot);
+      if (Favo) {
+        const result = Favo.map((fav) => fav.n);
+        return result.includes(spot);
+      }
     } else {
       console.log('No such document!');
     }
